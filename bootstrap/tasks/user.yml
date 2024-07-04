@@ -1,0 +1,6 @@
+- name: Add {{ user.name }}
+  ansible.builtin.user:
+    name: { { user.name } }
+    shell: /bin/bash
+    password: { { user.password } }
+    uid: { { user.uid } }
