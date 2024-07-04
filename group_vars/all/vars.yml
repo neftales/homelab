@@ -1,0 +1,5 @@
+---
+user:
+  name: neftales
+  uid: 1000
+  password: "{{vault_user_password}}"

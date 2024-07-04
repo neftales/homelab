@@ -1,6 +1,17 @@
-- name: Add {{ user.name }}
+- name: "Add {{ user.name }} user"
+  become: true
   ansible.builtin.user:
-    name: { { user.name } }
+    name: "{{ user.name }}"
     shell: /bin/bash
-    password: { { user.password } }
-    uid: { { user.uid } }
+    password: "{{ user.password | password_hash('sha512')}}"
+    uid: "{{ user.uid }}"
+
+- name: "Add sudoers file for {{user.name}}"
+  become: true
+  ansible.builtin.template:
+    src: sudoers.j2
+    dest: "/etc/sudoers.d/{{user.name}}"
+    owner: root
+    group: root
+    mode: 0440
+    validate: /usr/sbin/visudo -cf %s
