@@ -15,3 +15,8 @@
     group: root
     mode: 0440
     validate: /usr/sbin/visudo -cf %s
+
+- name: "Configure SSH key"
+  ansible.builtin.authorized_key:
+    user: "{{ user.name }}"
+    key: "{{ user.pub_key }}"
