@@ -1,0 +1,16 @@
+- name: Copy systemd service file
+  become: true
+  ansible:builtin.file:
+    src: files/portainer.service
+    dest: /etc/systemd/system/portainer.service
+
+- name: Reload daemon
+  become: true
+  ansible.builtin.shell:
+    command: systemctl daemon-reload
+
+- name: Enable/start docker services
+  ansible.builtin.service:
+    name: portainer
+    enabled: true
+    state: started
