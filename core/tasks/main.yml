@@ -1,4 +1,4 @@
 ---
 # tasks file for core
-- import_tasks: package.yml
+- import_tasks: packages.yml
 - import_tasks: docker.yml
