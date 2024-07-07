@@ -1,5 +1,5 @@
 ---
 # tasks file for bootstrap
-- import_tasks: packages.yml
 - import_tasks: user.yml
+- import_tasks: packages.yml
 - import_tasks: docker.yml
