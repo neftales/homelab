@@ -13,6 +13,7 @@
     cmd: systemctl daemon-reload
 
 - name: Enable/start portainer service
+  become: true
   ansible.builtin.service:
     name: portainer
     enabled: true
