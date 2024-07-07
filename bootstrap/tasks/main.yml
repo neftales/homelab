@@ -4,7 +4,6 @@
     name: "{{ user.name }}"
     shell: /bin/bash
     password: "{{ user.password | password_hash('sha512')}}"
-    uid: "{{ user.uid }}"
 
 - name: "Add sudoers file for {{user.name}}"
   become: true

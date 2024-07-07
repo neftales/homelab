@@ -1,6 +1,5 @@
 ---
 user:
   name: neftales
-  uid: 1000
   password: "{{vault_user_password}}"
   pub_key: "{{vault_user_pub_key}}"
