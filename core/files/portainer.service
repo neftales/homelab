@@ -8,7 +8,7 @@ TimeoutStartSec=0
 Restart=always
 ExecStartPre=-/usr/bin/docker stop portainer
 ExecStartPre=-/usr/bin/docker rm portainer
-ExecStartPre=/usr/bin/docker pull portainer
+ExecStartPre=/usr/bin/docker pull portainer/portainer-ce:latest
 ExecStart=/usr/bin/docker run -p 9000:9000 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data -e VIRTUAL_HOST=portainer.neftales.dev -e VIRTUAL_PORT=9000 portainer/portainer-ce:latest
  
 [Install]
