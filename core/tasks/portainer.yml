@@ -1,13 +1,16 @@
 - name: Copy systemd service file
   become: true
-  ansible:builtin.file:
-    src: files/portainer.service
+  ansible.builtin.copy:
+    src: portainer.service
     dest: /etc/systemd/system/portainer.service
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Reload daemon
   become: true
   ansible.builtin.shell:
-    command: systemctl daemon-reload
+    cmd: systemctl daemon-reload
 
 - name: Enable/start docker services
   ansible.builtin.service:
