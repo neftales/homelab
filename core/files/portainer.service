@@ -4,7 +4,7 @@ After=docker.service
 Requires=docker.service
  
 [Service]
-TimeoutStartSec=0
+TimeoutStartSec=infinity
 Restart=always
 ExecStartPre=-/usr/bin/docker stop portainer
 ExecStartPre=-/usr/bin/docker rm portainer

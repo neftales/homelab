@@ -1,4 +1,4 @@
-- name: Copy systemd service file
+- name: Copy portainer systemd service file
   become: true
   ansible.builtin.copy:
     src: portainer.service
@@ -12,7 +12,7 @@
   ansible.builtin.shell:
     cmd: systemctl daemon-reload
 
-- name: Enable/start docker services
+- name: Enable/start portainer service
   ansible.builtin.service:
     name: portainer
     enabled: true
