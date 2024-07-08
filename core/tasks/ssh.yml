@@ -1,0 +1,6 @@
+- name: Block ssh login for root
+  become: true
+  ansible.builtin.lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^#|PermitRootLogin"
+    line: "PermitRootLogin no"

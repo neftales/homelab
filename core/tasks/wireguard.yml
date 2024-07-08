@@ -1,0 +1,20 @@
+- name: Copy wireguard systemd service file
+  become: true
+  ansible.builtin.copy:
+    src: wireguard.service
+    dest: /etc/systemd/system/wireguard.service
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Reload daemon
+  become: true
+  ansible.builtin.shell:
+    cmd: systemctl daemon-reload
+
+- name: Enable/start wireguard service
+  become: true
+  ansible.builtin.service:
+    name: wireguard
+    enabled: true
+    state: started

@@ -1,0 +1,4 @@
+- hosts: all
+  tags: always
+  roles:
+    - bootstrap
