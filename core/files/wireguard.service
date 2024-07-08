@@ -1,0 +1,15 @@
+[Unit]
+Description=WireGuard VPN Service
+After=docker.service
+Requires=docker.service
+ 
+[Service]
+TimeoutStartSec=infinity
+Restart=always
+ExecStartPre=-/usr/bin/docker stop wireguard
+ExecStartPre=-/usr/bin/docker rm wireguard
+ExecStartPre=/usr/bin/docker pull lscr.io/linuxserver/wireguard:latest
+ExecStart=/usr/bin/docker docker run -d --name=wireguard --cap-add=NET_ADMIN --cap-add=SYS_MODULE -e TZ=America/Sao_Paulo -e SERVERURL=wireguard.neftales.dev -e SERVERPORT=51820 -e PEERS=1 -e PEERDNS=auto -e INTERNAL_SUBNET=10.13.13.0 -e ALLOWEDIPS=0.0.0.0/0 -e LOG_CONFS=true -p 51820:51820/udp -v /opt/wireguard/config:/config -v /lib/modules:/lib/modules --sysctl="net.ipv4.conf.all.src_valid_mark=1" --restart unless-stopped lscr.io/linuxserver/wireguard:latest
+ 
+[Install]
+WantedBy=multi-user.target

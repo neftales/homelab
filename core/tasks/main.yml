@@ -3,3 +3,4 @@
 - import_tasks: packages.yml
 - import_tasks: docker.yml
 - import_tasks: portainer.yml
+- import_tasks: wireguard.yml
