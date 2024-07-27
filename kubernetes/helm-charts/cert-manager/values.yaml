@@ -13,7 +13,7 @@ global:
   domain: neftales.dev
   dnsSecret:
     name: cloudflare-dns-token
-    token: token
+    token:
   clusterIssuer:
     name: "letsencrypt"
     email: neftales@gmail.com
