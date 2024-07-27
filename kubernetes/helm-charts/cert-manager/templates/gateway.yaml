@@ -12,6 +12,12 @@ spec:
       protocol: HTTPS
       hostname: "*.{{ .Values.global.domain }}"
       port: 443
+      allowedRoutes:
+        namespaces:
+          from: Selector
+          selector:
+            matchLabels:
+              shared-gateway-access: "true"
       tls:
         mode: Terminate
         certificateRefs:
