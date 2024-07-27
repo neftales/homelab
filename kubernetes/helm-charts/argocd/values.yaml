@@ -1,0 +1,18 @@
+argocd:
+  enabled: true
+  fullname: argocd
+  global:
+    domain: argocd.neftales.dev
+
+  configs:
+    params:
+      server.insecure: true
+
+  server:
+    ingress:
+      enabled: false
+
+gatewayApi:
+  name: neftales-dev-tls
+  namespace: cert-manager
+  hostname: argocd.neftales.dev

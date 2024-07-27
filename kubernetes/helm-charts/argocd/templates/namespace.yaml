@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.argocd.fullname }}
+  labels:
+    kubernetes.io/metadata.name: {{ .Values.argocd.fullname }}
+    shared-gateway-access: 'true'
+
