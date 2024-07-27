@@ -5,7 +5,4 @@ metadata:
   labels:
     kubernetes.io/metadata.name: {{ .Values.argocd.fullname }}
     shared-gateway-access: 'true'
-spec:
-  finalizers:
-    - kubernetes
 
