@@ -4,7 +4,7 @@ gatewayApi:
   hostnames:
     grafana: grafana.neftales.dev
     prometheus: prometheus.neftales.dev
-    alertmanager: alertmanager.neftales.dev
+    alertManager: alertmanager.neftales.dev
 
 kube-prometheus-stack:
   enabled: true
