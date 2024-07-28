@@ -7,6 +7,9 @@ argocd:
   configs:
     params:
       server.insecure: true
+    cm:
+      create: true
+      application.instanceLabelKey: app.kubernetes.io/instance
 
   server:
     ingress:
