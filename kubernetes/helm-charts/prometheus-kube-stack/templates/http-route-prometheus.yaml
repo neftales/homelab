@@ -7,7 +7,7 @@ spec:
     - name: {{ .Values.gatewayApi.name }}
       namespace: {{ .Values.gatewayApi.namespace }}
   hostnames:
-    - {{ .Values.gatewayApi.hostnames.prometheus}}
+    - {{ .Values.gatewayApi.hostnames.prometheus }}
   rules:
     - matches:
         - path:
