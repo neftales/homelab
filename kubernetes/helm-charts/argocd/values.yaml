@@ -7,6 +7,16 @@ argocd:
   configs:
     params:
       server.insecure: true
+    cm:
+      create: true
+      application.instanceLabelKey: app.kubernetes.io/instance
+      resource.exclusions: |
+        - apiGroups:
+            - cilium.io
+          kinds:
+            - CiliumIdentity
+          clusters:
+            - "*"
 
   server:
     ingress:
