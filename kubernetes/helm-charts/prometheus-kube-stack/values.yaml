@@ -1,0 +1,106 @@
+gatewayApi:
+  name: neftales-dev-tls
+  namespace: cert-manager
+  hostnames:
+    grafana: grafana.neftales.dev
+    prometheus: prometheus.neftales.dev
+
+kube-prometheus-stack:
+  enabled: true
+
+  alertmanager:
+    enabled: true
+    alertmanagerSpec:
+      replicas: 1
+      ## Storage is the definition of how storage will be used by the Alertmanager instances.
+      ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md
+      ##
+      storage: {}
+      # volumeClaimTemplate:
+      #   spec:
+      #     storageClassName: gluster
+      #     accessModes: ["ReadWriteOnce"]
+      #     resources:
+      #       requests:
+      #         storage: 50Gi
+      #     selector: {}
+
+      ## The external URL the Alertmanager instances will be available under. This is necessary to generate correct URLs. This is necessary if Alertmanager is not served from root of a DNS name. string  false
+      ##
+      externalUrl: alertmanager.neftales.dev
+
+      ## The route prefix Alertmanager registers HTTP handlers for. This is useful, if using ExternalURL and a proxy is rewriting HTTP routes of a request, and the actual ExternalURL is still true,
+      ## but the server serves requests under a different route prefix. For example for use with kubectl proxy.
+      ##
+      routePrefix: /
+
+      resources: {}
+  grafana:
+    enabled: true
+    namespaceOverride: ""
+
+    adminPassword: prom-operator
+
+  ## Manages Prometheus and Alertmanager components
+  ##
+  prometheusOperator:
+    enabled: true
+    revisionHistoryLimit: 3
+
+  prometheus:
+    enabled: true
+    ## Configure network policy for the prometheus
+    networkPolicy:
+      enabled: false
+
+      ## Flavor of the network policy to use.
+      #  Can be:
+      #  * kubernetes for networking.k8s.io/v1/NetworkPolicy
+      #  * cilium     for cilium.io/v2/CiliumNetworkPolicy
+      flavor: cilium
+
+      # cilium:
+      #   endpointSelector:
+      #   egress:
+      #   ingress:
+
+      # egress:
+      # - {}
+      # ingress:
+      # - {}
+      # podSelector:
+      #   matchLabels:
+      #     app: prometheus
+
+    prometheusSpec:
+      ## Statefulset's persistent volume claim retention policy
+      ## pvcDeleteOnStsDelete and pvcDeleteOnStsScale determine whether
+      ## statefulset's PVCs are deleted (true) or retained (false) on scaling down
+      ## and deleting statefulset, respectively. Requires 1.27.0+.
+      ## Ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#persistentvolumeclaim-retention
+      persistentVolumeClaimRetentionPolicy: {}
+      #  whenDeleted: Retain
+      #  whenScaled: Retain
+
+      externalUrl: prometheus.neftales.dev
+
+      ## How long to retain metrics
+      ##
+      retention: 90d
+
+      storageSpec: {}
+      ## Using PersistentVolumeClaim
+      ##
+      #  volumeClaimTemplate:
+      #    spec:
+      #      storageClassName: gluster
+      #      accessModes: ["ReadWriteOnce"]
+      #      resources:
+      #        requests:
+      #          storage: 50Gi
+      #    selector: {}
+
+      ## Using tmpfs volume
+      ##
+      #  emptyDir:
+      #    medium: Memory
