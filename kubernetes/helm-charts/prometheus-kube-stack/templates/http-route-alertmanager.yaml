@@ -14,6 +14,6 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: {{ .Release.Name }}-alertmanager
+        - name: prometheus-stack-kube-prom-alertmanager
           kind: Service
           port: 9093
