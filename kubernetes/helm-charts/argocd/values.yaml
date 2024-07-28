@@ -10,6 +10,13 @@ argocd:
     cm:
       create: true
       application.instanceLabelKey: app.kubernetes.io/instance
+      resource.exclusions: |
+        - apiGroups:
+            - cilium.io
+          kinds:
+            - CiliumIdentity
+          clusters:
+            - "*"
 
   server:
     ingress:
