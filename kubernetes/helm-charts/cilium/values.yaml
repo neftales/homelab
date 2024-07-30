@@ -1,3 +1,13 @@
+ciliumL2AnnouncementPolicy:
+  name: basic-policy
+  interface: enp1s0
+  externalIPs: true
+  loadBalancerIPs: true
+
+ciliumLoadBalancerIPPool:
+  name: pool-01
+  cidr: "192.168.15.240/29"
+
 cilium:
   enabled: true
   encryption:
