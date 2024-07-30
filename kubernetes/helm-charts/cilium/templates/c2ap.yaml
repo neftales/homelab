@@ -1,0 +1,9 @@
+apiVersion: "cilium.io/v2alpha1"
+kind: CiliumL2AnnouncementPolicy
+metadata:
+  name: {{ .Values.ciliumL2AnnouncementPolicy.name }}
+spec:
+  interfaces:
+  - {{ .Values.ciliumL2AnnouncementPolicy.interface }}
+  externalIPs: {{ .Values.ciliumL2AnnouncementPolicy.externalIPs }}
+  loadBalancerIPs: {{ .Values.ciliumL2AnnouncementPolicy.loadBalancerIPs }}
