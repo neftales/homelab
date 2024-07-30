@@ -16,8 +16,17 @@ cilium:
   gatewayAPI:
     enabled: true
   hubble:
+    enabled: true
+    metrics:
+      serviceMonitor:
+        enabled: true
     relay:
       enabled: true
+      prometheus:
+        enabled: true
+        port: 9966
+        serviceMonitor:
+          enabled: true
     ui:
       enabled: true
   ingressController:
@@ -28,3 +37,9 @@ cilium:
   kubeProxyReplacement: true
   l2announcements:
     enabled: true
+  prometheus:
+    enabled: true
+    port: 9962
+    serviceMonitor:
+      enabled: true
+      trustCRDsExist: true
