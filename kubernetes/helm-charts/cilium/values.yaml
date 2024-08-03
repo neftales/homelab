@@ -26,8 +26,12 @@ cilium:
         - flow
         - port-distribution
         - icmp
+        - http
+        - "policy:sourceContext=app|workload-name|pod|reserved-identity;destinationContext=app|workload-name|pod|dns|reserved-identity;labelsContext=source_namespace,destination_namespace"
       serviceMonitor:
         enabled: true
+        labels:
+          release: prometheus-stack
     relay:
       enabled: true
       prometheus:
@@ -35,6 +39,8 @@ cilium:
         port: 9966
         serviceMonitor:
           enabled: true
+          labels:
+            release: prometheus-stack
     ui:
       enabled: true
   ingressController:
@@ -49,6 +55,8 @@ cilium:
     enabled: true
     serviceMonitor:
       enabled: true
+      labels:
+        release: prometheus-stack
       trustCRDsExist: true
   operator:
     prometheus:
