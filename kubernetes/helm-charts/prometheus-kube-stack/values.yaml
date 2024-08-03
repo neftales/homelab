@@ -41,6 +41,11 @@ kube-prometheus-stack:
 
     adminPassword: prom-operator
 
+    serviceMonitor:
+      enabled: true
+      labels:
+        release: prometheus-stack
+
   ## Manages Prometheus and Alertmanager components
   ##
   prometheusOperator:
