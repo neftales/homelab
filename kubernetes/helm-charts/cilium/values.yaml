@@ -48,7 +48,6 @@ cilium:
     enabled: true
   prometheus:
     enabled: true
-    port: 9962
     serviceMonitor:
       enabled: true
       trustCRDsExist: true
