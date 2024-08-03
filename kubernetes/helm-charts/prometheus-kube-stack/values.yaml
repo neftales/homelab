@@ -16,15 +16,14 @@ kube-prometheus-stack:
       ## Storage is the definition of how storage will be used by the Alertmanager instances.
       ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md
       ##
-      storage: {}
-      # volumeClaimTemplate:
-      #   spec:
-      #     storageClassName: gluster
-      #     accessModes: ["ReadWriteOnce"]
-      #     resources:
-      #       requests:
-      #         storage: 50Gi
-      #     selector: {}
+      storage:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: longhorn
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 20Gi
 
       ## The external URL the Alertmanager instances will be available under. This is necessary to generate correct URLs. This is necessary if Alertmanager is not served from root of a DNS name. string  false
       ##
@@ -89,19 +88,11 @@ kube-prometheus-stack:
       ##
       retention: 90d
 
-      storageSpec: {}
-      ## Using PersistentVolumeClaim
-      ##
-      #  volumeClaimTemplate:
-      #    spec:
-      #      storageClassName: gluster
-      #      accessModes: ["ReadWriteOnce"]
-      #      resources:
-      #        requests:
-      #          storage: 50Gi
-      #    selector: {}
-
-      ## Using tmpfs volume
-      ##
-      #  emptyDir:
-      #    medium: Memory
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: longhorn
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 30Gi
