@@ -3,5 +3,5 @@ kind: CiliumLoadBalancerIPPool
 metadata:
   name: {{ .Values.ciliumLoadBalancerIPPool.name }}
 spec:
-  cidrs:
+  blocks:
   - cidr: {{ .Values.ciliumLoadBalancerIPPool.cidr }}
