@@ -43,3 +43,6 @@ cilium:
     serviceMonitor:
       enabled: true
       trustCRDsExist: true
+  operator:
+    prometheus:
+      enabled: true
