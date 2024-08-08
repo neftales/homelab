@@ -4,6 +4,6 @@ gatewayApi:
   hostname: longhorn.neftales.dev
 
 longhorn:
-  enabled: false
+  enabled: true
   persistence:
     defaultClassReplicaCount: 2
