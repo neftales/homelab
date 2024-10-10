@@ -6,7 +6,7 @@ version: 0.1.0
 appVersion: "0.1.0"
 dependencies:
   - name: argo-cd
-    version: 7.4.5
+    version: 7.6.8
     repository: https://argoproj.github.io/argo-helm
     alias: argocd
     condition: argocd.enabled
