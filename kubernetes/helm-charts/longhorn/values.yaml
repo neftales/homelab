@@ -1,9 +1,0 @@
-gatewayApi:
-  name: neftales-dev-tls
-  namespace: cert-manager
-  hostname: longhorn.neftales.dev
-
-longhorn:
-  enabled: true
-  persistence:
-    defaultClassReplicaCount: 2
