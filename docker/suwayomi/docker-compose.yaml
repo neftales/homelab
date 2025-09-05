@@ -1,0 +1,28 @@
+services:
+  suwayomi:
+    image: ghcr.io/suwayomi/suwayomi-server:v2.1.1910
+    pull_policy: always
+    user: 3000:3000
+    environment:
+      - TZ=America/Sao_Paulo
+      - FLARESOLVERR_ENABLED=true
+      - FLARESOLVERR_URL=http://flaresolverr:8191
+      - EXTENSION_REPOS=["https://raw.githubusercontent.com/keiyoushi/extensions/repo/index.min.json"]
+    volumes:
+      - /mnt/pool/apps/suwayomi-downloads:/home/suwayomi/.local/share/Tachidesk/downloads
+      - /mnt/apps/suwayomi:/home/suwayomi/.local/share/Tachidesk
+    ports:
+      - 4567:4567
+    restart: unless-stopped
+    networks:
+      - private-apps
+  flaresolverr:
+    image: ghcr.io/thephaseless/byparr:latest
+    container_name: flaresolverr
+    environment:
+      - TZ=America/Sao_Paulo
+    restart: unless-stopped
+    networks:
+      - private-apps
+networks:
+  private-apps: {}
