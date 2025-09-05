@@ -1,0 +1,27 @@
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:ollama
+    pull_policy: always
+    container_name: open-webui
+    ports:
+      - "3001:8080"
+      - "11434:11434"
+    environment:
+      - OLLAMA_BASE_URL=http://0.0.0.0:11434
+      - PORT=3001
+    network_mode: host
+    volumes:
+      - "ollama:/root/.ollama"
+      - "open-webui:/app/backend/data"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all # alternatively, use `count: all` for all GPUs
+              capabilities: [gpu]
+volumes:
+  ollama:
+    external: true
+  open-webui:
+    external: true

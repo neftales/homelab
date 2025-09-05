@@ -1,0 +1,12 @@
+services:
+  couchdb:
+    image: couchdb:3.5.0
+    container_name: couchdb-for-ols
+    user: 1000:1000
+    env_file: secret.env
+    volumes:
+      - ./couchdb-data:/opt/couchdb/data
+      - ./couchdb-etc:/opt/couchdb/etc/local.d
+    ports:
+      - 5984:5984
+    restart: unless-stopped
