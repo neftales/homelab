@@ -18,7 +18,7 @@ resource "proxmox_virtual_environment_vm" "apps" {
 
   disk {
     datastore_id = "local-lvm"
-    import_from  = proxmox_virtual_environment_download_file.ubuntu_cloud_image_22_04.id
+    import_from  = data.proxmox_virtual_environment_file.ubuntu_cloud_image_22_04.id
     interface    = "virtio0"
     iothread     = true
     discard      = "on"
