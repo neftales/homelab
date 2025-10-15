@@ -24,7 +24,6 @@ variable "proxmox_ssh_user" {
   description = "SSH user for access Proxmox Virtual Environment"
 }
 
-
 variable "proxmox_vms_ssh_key" {
   type        = string
   description = "SSH Public Key for access VMs running Proxmox Virtual Environment"
