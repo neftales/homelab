@@ -1,3 +1,13 @@
+terraform {
+  required_providers {
+    proxmox = {
+      source  = "bpg/proxmox"
+      version = "0.85.0"
+    }
+  }
+  required_version = "1.10.6"
+}
+
 resource "proxmox_virtual_environment_vm" "apps" {
   name        = "apps"
   description = "Docker Server for Apps"

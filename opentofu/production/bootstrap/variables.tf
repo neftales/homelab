@@ -54,8 +54,3 @@ variable "backend_s3_region" {
   description = "Region of S3 Server Backend"
 }
 
-variable "backend_s3_key" {
-  type        = string
-  description = "Path where the state will be stored on bucket"
-}
-
