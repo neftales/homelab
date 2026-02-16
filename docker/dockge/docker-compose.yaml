@@ -1,0 +1,13 @@
+services:
+  dockge:
+    environment:
+      - DOCKGE_STACKS_DIR=/opt/stacks
+      - DOCKGE_ENABLE_CONSOLE=true
+    image: louislam/dockge:1
+    ports:
+      - "5001:5001"
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /mnt/apps/dockge/data:/app/data
+      - /mnt/apps/dockge/stacks:/opt/stacks

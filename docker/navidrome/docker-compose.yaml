@@ -1,0 +1,13 @@
+services:
+  navidrome:
+    image: deluan/navidrome:latest
+    user: 3000:3000
+    restart: unless-stopped
+    volumes:
+      - /mnt/apps/navidrome:/data
+      - /mnt/data/media/Music:/music:ro
+    networks:
+      - private
+networks:
+  private:
+    external: true
